@@ -14,3 +14,9 @@ I wanted to created a game where you could be an ball and maneuver though obsatc
 ![layout](img/layout.jpg)
 ![how-to-win](img/how-to-win.jpg)
 ![gameover](img/gameover.jpg)
+
+- This is the rough outline of what I am trying to accomplish, so as of right now they will be basic shapes.
+
+- If I am not behind schedule I want to implented an actual 2nd character model for the player, obbstacles, and star. 
+
+- If I am able to spruce up the design the name of the game will also change later as well.
