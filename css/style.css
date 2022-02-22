@@ -1,0 +1,7 @@
+#canvas {
+    width: 960px;
+    height: 500px;
+    position: absolute;
+    background-color: teal;
+    border: 1px solid black
+}
