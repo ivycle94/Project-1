@@ -4,7 +4,8 @@ const game = document.getElementById("canvas")
 // getting game's context, which allows to specify where to put things and how big to make them.
 const ctx = game.getContext("2d")
 // declare obstacles as a variable for an array
-
+let counter = 0
+let starsWin = 10
 // now you can set attributes to the game,
 // to set heigh and width based on COMPUTED STYLE
 // it basically means reading how it's displaying in the current state of the browser
@@ -114,7 +115,7 @@ const stars = []
 
 class Star {
     constructor() {
-        this.x = 480,
+        this.x = 550, // chnage this value if your canvas isnt 960 px (width should be 480)
         this.y = (Math.floor(Math.random() * canvas.height) - player.height),
         this.color = "yellow",
         this.height = 20,
@@ -146,6 +147,7 @@ const spawnStars = () => {
 }
 
 //******************* Collision Detection ***************************
+
 const detectHit = () => {
     for (let i = 0; i < obstacles.length; i++) {
         if (
@@ -164,6 +166,7 @@ const detectHit = () => {
 
 //******************* Collect Stars ***************************
 
+//let counter = 0
 const starCollected = () => {
     for (let i = 0; i < stars.length; i++) {
         if (
@@ -176,20 +179,20 @@ const starCollected = () => {
             // ctx.clearRect(0, 0, game.width, game.height)
             // return Star.alive = false
             // counter++
-            // console.log(counter)
+            console.log(counter)
             //~~~~~~~~~ retry ~~~~~~~~~~~~
              stars.splice(stars)
              counter++
-             if (counter === 2) {
+             if (counter === starsWin) {
                  console.log("YOU WIN!")
-                return
+                // return
             }
         }
     }
 }
 
 // console.log(counter)
-let counter = 0
+
 let pressedJump = false
 let frame = 0
 let gamespeed = 2
@@ -200,10 +203,9 @@ const gameLoop = () => {
     player.render()
     spawnStars()
     starCollected()
-    // if (starCollected()) {
-    //     counter++
-    //     console.log(counter)
-    // }
+    if(counter === starsWin) {
+        return
+    }
     spawnObstacles()
     detectHit()
     if (player.alive === false) {
@@ -211,6 +213,7 @@ const gameLoop = () => {
         //insert game over text
         return
     }
+    
     requestAnimationFrame(gameLoop)  
     frame ++ 
     // console.log(frame)
