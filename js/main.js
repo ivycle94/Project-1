@@ -1,11 +1,14 @@
 // console.log("test")
 // grabbing html elemnts and setting them up as variables to manipulate
 const game = document.getElementById("canvas")
+const starCounter = document.getElementById("stars-counter")
+const gameoverScreen = document.getElementById("gameover")
+const youWinScreen = document.getElementById("you-win")
 // getting game's context, which allows to specify where to put things and how big to make them.
 const ctx = game.getContext("2d")
 // declare obstacles as a variable for an array
 let counter = 0
-let starsWin = 10
+let starsWin = 1
 // now you can set attributes to the game,
 // to set heigh and width based on COMPUTED STYLE
 // it basically means reading how it's displaying in the current state of the browser
@@ -183,6 +186,7 @@ const starCollected = () => {
             //~~~~~~~~~ retry ~~~~~~~~~~~~
              stars.splice(stars)
              counter++
+             starCounter.textContent = "Stars: " + counter + "/" + starsWin
              if (counter === starsWin) {
                  console.log("YOU WIN!")
                 // return
@@ -204,6 +208,7 @@ const gameLoop = () => {
     spawnStars()
     starCollected()
     if(counter === starsWin) {
+        youWinScreen.textContent = "Y O U   W I N!"
         return
     }
     spawnObstacles()
@@ -211,9 +216,9 @@ const gameLoop = () => {
     if (player.alive === false) {
         console.log("GAMEOVER")
         //insert game over text
+        gameoverScreen.textContent = "G A M E  O V E R !"
         return
     }
-    
     requestAnimationFrame(gameLoop)  
     frame ++ 
     // console.log(frame)

@@ -28,3 +28,17 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+#stars-counter {
+    text-align: right;
+    right: 5px;
+    top: 520px;
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+    z-index: 1;
+}
