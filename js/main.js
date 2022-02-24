@@ -83,7 +83,7 @@ class Obstacle {
 }
 
 const spawnObstacles = () => {
-    // 10 frames per wall 
+    // 10 walls per 50 frames 
     if (frame % 500 === 0) {
         obstacles.push(new Obstacle)
         //add more speed after each spawn
@@ -93,7 +93,7 @@ const spawnObstacles = () => {
         obstacles[i].update()
     }
     // Laptop crashed, must get rid of extra obstacles
-    if (obstacles.length > 10) {
+    if (obstacles.length > 20) {
         obstacles.pop()
     }
 }
@@ -115,7 +115,7 @@ const stars = []
 class Star {
     constructor() {
         this.x = 480,
-        this.y = (Math.floor(Math.random() * canvas.height)),
+        this.y = (Math.floor(Math.random() * canvas.height) - player.height),
         this.color = "yellow",
         this.height = 20,
         this.width = 20,
@@ -130,7 +130,7 @@ class Star {
         this.render()
     }
 }
-
+// let star = new Star(40, 40, "yellow", 20, 20)
 
 const spawnStars = () => {
     if (frame % 400 === 0) {
@@ -144,11 +144,6 @@ const spawnStars = () => {
         stars.pop(stars[0])
     }
 }
-
-
-
-// let star = new Star(40, 40, "yellow", 20, 20)
-
 
 //******************* Collision Detection ***************************
 const detectHit = () => {
@@ -167,6 +162,34 @@ const detectHit = () => {
     } 
 } 
 
+//******************* Collect Stars ***************************
+
+const starCollected = () => {
+    for (let i = 0; i < stars.length; i++) {
+        if (
+            stars[i].x < player.x + player.width &&
+            stars[i].x + stars[i].width > player.x &&
+            stars[i].y < player.y + player.height &&
+            stars[i].y + stars[i].height > player.y
+        ) {
+            console.log("COLLECTED STAR")
+            // ctx.clearRect(0, 0, game.width, game.height)
+            // return Star.alive = false
+            // counter++
+            // console.log(counter)
+            //~~~~~~~~~ retry ~~~~~~~~~~~~
+             stars.splice(stars)
+             counter++
+             if (counter === 2) {
+                 console.log("YOU WIN!")
+                return
+            }
+        }
+    }
+}
+
+// console.log(counter)
+let counter = 0
 let pressedJump = false
 let frame = 0
 let gamespeed = 2
@@ -176,6 +199,11 @@ const gameLoop = () => {
     player.update()
     player.render()
     spawnStars()
+    starCollected()
+    // if (starCollected()) {
+    //     counter++
+    //     console.log(counter)
+    // }
     spawnObstacles()
     detectHit()
     if (player.alive === false) {
@@ -189,11 +217,6 @@ const gameLoop = () => {
 }
 gameLoop();
 
-//******************* Collect Detection ***************************
-
-const detectCollect = () => {
-
-}
 
 addEventListener("keydown", function(e){
     // console.log("you pressed", e.code)
