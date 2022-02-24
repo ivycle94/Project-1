@@ -8,7 +8,7 @@ const youWinScreen = document.getElementById("you-win")
 const ctx = game.getContext("2d")
 // declare obstacles as a variable for an array
 let counter = 0
-let starsWin = 1
+let starsWin = 10
 // now you can set attributes to the game,
 // to set heigh and width based on COMPUTED STYLE
 // it basically means reading how it's displaying in the current state of the browser
@@ -165,7 +165,7 @@ const detectHit = () => {
             player.alive = false
         }
     } 
-} 
+}  
 
 //******************* Collect Stars ***************************
 
@@ -203,16 +203,16 @@ let gamespeed = 2
 
 const gameLoop = () => {
     ctx.clearRect(0, 0, game.width, game.height)
-    player.update()
-    player.render()
     spawnStars()
     starCollected()
+    player.update()
+    player.render()
+    spawnObstacles()
+    detectHit()
     if(counter === starsWin) {
         youWinScreen.textContent = "Y O U   W I N!"
         return
     }
-    spawnObstacles()
-    detectHit()
     if (player.alive === false) {
         console.log("GAMEOVER")
         //insert game over text
