@@ -65,7 +65,7 @@ const obstacles = []
 
 class Obstacle {
     constructor () {
-        this.topObstacles = (Math.floor(Math.random() * canvas.height/3)) + 60,
+        this.topObstacles = (Math.floor(Math.random() * canvas.height/3)) + 50,
         this.bottomObstacles = (Math.floor(Math.random() * canvas.height/3)) + 70,
         this.x = canvas.width,
         this.width = 100,
@@ -144,7 +144,29 @@ const spawnStars = () => {
         stars.pop(stars[0])
     }
 }
+
+
+
 // let star = new Star(40, 40, "yellow", 20, 20)
+
+
+//******************* Collision Detection ***************************
+const detectHit = () => {
+    for (let i = 0; i < obstacles.length; i++) {
+        if (
+            player.x < obstacles[i].x + obstacles[i].width && 
+            player.x + player.width > obstacles[i].x && 
+            ((player.y < 0 + obstacles[i].topObstacles && 
+            player.y + player.height > 0) || 
+            (player.y > canvas.height - obstacles[i].bottomObstacles && 
+            player.y - player.height < canvas.height))) {
+
+            // console.log('HIT!')
+            player.alive = false
+        }
+    } 
+} 
+
 let pressedJump = false
 let frame = 0
 let gamespeed = 2
@@ -155,35 +177,33 @@ const gameLoop = () => {
     player.render()
     spawnStars()
     spawnObstacles()
+    detectHit()
+    if (player.alive === false) {
+        console.log("GAMEOVER")
+        //insert game over text
+        return
+    }
     requestAnimationFrame(gameLoop)  
     frame ++ 
     // console.log(frame)
 }
 gameLoop();
 
-//******************* Collision Detection ***************************
-
-const detectHit = () => {
-    // if () {
-
-    // }
-}
-
 //******************* Collect Detection ***************************
 
 const detectCollect = () => {
-    
+
 }
 
 addEventListener("keydown", function(e){
-    console.log("you pressed", e.code)
+    // console.log("you pressed", e.code)
     if (e.code === "Space") {
         // player.y -= 50
         pressedJump = true
     }
 })
 addEventListener("keyup", function(e){
-    console.log("you released", e.code)
+    // console.log("you released", e.code)
     if (e.code === "Space") {
         pressedJump = false
     }
@@ -197,8 +217,6 @@ addEventListener("keyup", function(e){
 //             break
 //     }
 // }
-
-
 
 document.addEventListener("DOMContentLoaded", function () {
     

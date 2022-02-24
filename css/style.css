@@ -7,12 +7,18 @@ body {
     height: 500px;
     position: relative;
     background-color: teal;
+   /* background-image: url("https://pbs.twimg.com/tweet_video_thumb/E42KIKcVkAA8oqJ.jpg"); 
+    background-position: center;
+    background-size: cover;
+    background-repeat: repeat-x;
+    */
     border: 1px solid black;
-    /*
+    
     display: flex;
     align-items: center;
     justify-content: center;
-    */
+    align-items: center;
+    
 }
 
 #container {
