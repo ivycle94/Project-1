@@ -1,7 +1,23 @@
+body {
+    background-color: whitesmoke;
+}
+
 #canvas {
     width: 960px;
     height: 500px;
-    position: absolute;
+    position: relative;
     background-color: teal;
-    border: 1px solid black
+    border: 1px solid black;
+    /*
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    */
+}
+
+#container {
+    position: justify;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
 }
