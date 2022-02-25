@@ -1,4 +1,5 @@
 body {
+   /* background-image: url("");*/
     background-color: whitesmoke;
 }
 
@@ -7,11 +8,12 @@ body {
     height: 500px;
     position: relative;
     background-color: teal;
-    /*
-    background-image: url("https://pbs.twimg.com/tweet_video_thumb/E42KIKcVkAA8oqJ.jpg"); 
+    
+    background-image: url("https://cdnb.artstation.com/p/assets/images/images/029/514/221/large/santiago-banol-yandros-image.jpg?1597790275"); 
     background-position: center;
     background-size: cover;
     background-repeat: repeat-x;
+    
     
     border: 1px solid black;
     /*

@@ -81,20 +81,29 @@ let player = new Ball()
 //need new wall to appear every so often
 //wall should appear a end of canvas <--- done
 //should work its way to 0 x coordinate
+// const obstacleSprite = new Image()
+// obstacleSprite.src = "img/test.png"
 const obstacles = []
 
 class Obstacle {
     constructor () {
-        this.topObstacles = (Math.floor(Math.random() * canvas.height/3)) + 50,
-        this.bottomObstacles = (Math.floor(Math.random() * canvas.height/3)) + 70,
+        // this.imageWidth = 100,
+        this.topObstacles = (Math.random() * canvas.height/3) + 50,
+        this.bottomObstacles = (Math.random() * canvas.height/3) + 70,
         this.x = canvas.width,
-        this.width = 100,
-        this.color = "white"
+        this.width = 50,
+        this.color = "black"
     }
     render = function () {
         ctx.fillStyle = this.color
-        ctx.fillRect(this.x, 0, this.width, this.topObstacles) // <----------------------------------------- top walls
-        ctx.fillRect(this.x, canvas.height - this.bottomObstacles, this.width, this.bottomObstacles) // <--- bottom walls
+        ctx.fillRect(this.x, 0, this.width, this.topObstacles) 
+        ctx.strokeRect(this.x, 0, this.width, this.topObstacles)// <----------------------------------------- top walls
+        ctx.fillRect(this.x, canvas.height - this.bottomObstacles, this.width, this.bottomObstacles)
+        ctx.strokeRect(this.x, canvas.height - this.bottomObstacles, this.width, this.bottomObstacles) // <--- bottom walls
+        ctx.lineWidth = 1
+        ctx.strokeStyle = "whitesmoke"
+        
+        // ctx.drawImage(obstacleSprite, 0, 0, this.imageWidth, this.topObstacles, this.x, 0, this.width, this.bottomObstacles)
     }
     update = function () {
         this.x -= 1
@@ -103,8 +112,8 @@ class Obstacle {
 }
 
 const spawnObstacles = () => {
-    // 10 walls per 50 frames 
-    if (frame % 500 === 0) {
+    // 10 walls per 50 frames (500)
+    if (frame % 300 === 0) {
         obstacles.push(new Obstacle)
         //add more speed after each spawn
         // gamespeed ++ <-- doesn't work.
@@ -130,20 +139,25 @@ const spawnObstacles = () => {
 //     }
 
 //******************* Class Constructor for Stars ***************************
-const stars = []
+const starSprite = new Image()
+starSprite.src = "img/star.png"
 
+const stars = []
 class Star {
     constructor() {
         this.x = 550, // chnage this value if your canvas isnt 960 px (width should be 480)
         this.y = (Math.floor(Math.random() * canvas.height) - player.height),
         this.color = "yellow",
+        this.starHeight = 40,
         this.height = 20,
+        this.starWidth = 40,
         this.width = 20,
         this.alive = true  
     }
     render = function () {
         ctx.fillStyle = this.color
-        ctx.fillRect(this.x, this.y, this.height, this.width)
+        // ctx.fillRect(this.x, this.y, this.height, this.width)
+        ctx.drawImage(starSprite, 0, 0, this.starWidth, this.starHeight, this.x - 2, this.y - 3, this.width * 1.2, this.height * 1.2)
     }
     update = function () {
         this.x -= 1
@@ -174,7 +188,7 @@ const detectHit = () => {
             player.x + player.width > obstacles[i].x && 
             ((player.y < 0 + obstacles[i].topObstacles && 
             player.y + player.height > 0) || 
-            (player.y > canvas.height - obstacles[i].bottomObstacles && 
+            (player.y > (canvas.height - obstacles[i].bottomObstacles -45) && 
             player.y - player.height < canvas.height))) {
 
             // console.log('HIT!')
