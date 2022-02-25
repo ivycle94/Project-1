@@ -15,18 +15,28 @@ let starsWin = 10
 game.setAttribute("width", getComputedStyle(game)["width"])
 game.setAttribute("height", getComputedStyle(game)["height"])
 
-//*********************** Class Constructor for Ball *******************************
+// const kirby = new Image()
+// kirby.src = "img/kirby.png"
+// const kirbWidth = 130
+// const kirbHeight = 119
+// let spriteX = 0
 
+//*********************** Class Constructor for Ball *******************************
+const kirbySprite = new Image()
+kirbySprite.src = "img/kirby.png"
 class Ball {
     constructor () {
         this.x = 150,
         this.y = 200,
         this.vy = 0,
+        this.kirbWidth = 130,
         this.width = 40,
+        this.kirbHeight = 119,
         this.height = 40,
         this.color = "black",
         this.weight = 1,
-        this.alive = true
+        this.alive = true,
+        this.kirbFrameX = 0
     }
     update = function () {
         if(this.y > canvas.height - this.height) {
@@ -51,10 +61,16 @@ class Ball {
     }
     render = function () {
         ctx.fillStyle = this.color
-        ctx.fillRect(this.x, this.y, this.width, this.height)
+        // ctx.fillRect(this.x, this.y, this.width, this.height)
+        ctx.drawImage(kirbySprite, this.kirbFrameX * this.width, 0, this.kirbWidth, this.kirbHeight, this.x - 15, this.y - 15, this.width * 1.6, this.height * 1.6)
     }
     jump = function () {
         this.vy -= 2
+        // if(this.kirbFrameX > 6) {
+        //     this.kirbFrameX = 0
+        // } else {
+        //     this.kirbFrameX += 1
+        // }
     }
 }
 let player = new Ball()
@@ -217,6 +233,7 @@ const gameLoop = () => {
         console.log("GAMEOVER")
         //insert game over text
         gameoverScreen.textContent = "G A M E  O V E R !"
+       
         return
     }
     requestAnimationFrame(gameLoop)  
@@ -231,6 +248,12 @@ addEventListener("keydown", function(e){
     if (e.code === "Space") {
         // player.y -= 50
         pressedJump = true
+        if(player.kirbFrameX >= 3) {
+            player.kirbFrameX = 0
+        } else {
+            player.kirbFrameX += 3
+        }
+        
     }
 })
 addEventListener("keyup", function(e){
