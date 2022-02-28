@@ -6,18 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Star Glider</title>
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jura&family=Megrim&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body> 
     <div id="body-container">
-        <div id="container">
-            <h2 id="stars-counter">Stars: 0/10</h2>
-            <canvas id="canvas"></canvas> <!---- game goes here ----> </canvas>
-                <h1 id="pressEnter"></h1>
-                <h1 id="gameover"></h1>
-                <!--<button id="play-again"></button>-->
-            <h1 id="you-win"></h1>
-        </div> 
+            <div id="container">
+                <h1 id="star-glider">Star Glider</h1>
+                <p id="instructions"><b><strong>Instructions:</strong></b> Press or hold spacebar to keep kirby gliding along without hitting the obstacles, while also trying to collect a total of 10 stars to win.</p>
+                <h3 id="stars-counter">Stars: 0/10</h3>
+                <canvas id="canvas"></canvas> <!---- game goes here ----> </canvas>
+                    <h2 id="pressEnter"></h2>
+                    <h2 id="gameover"></h2>
+                    <!--<button id="play-again"></button>-->
+                    <h2 id="you-win"></h2>
+            </div> 
     </div>
     <script src="js/main.js"></script>
 </body>

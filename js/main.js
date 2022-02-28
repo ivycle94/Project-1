@@ -212,7 +212,7 @@ const starCollected = () => {
             console.log(counter)
             //~~~~~~~~~ retry ~~~~~~~~~~~~
              stars.splice(stars)
-             counter++
+             counter++ 
              starCounter.textContent = "Stars: " + counter + "/" + starsWin
              if (counter === starsWin) {
                  console.log("YOU WIN!")
@@ -242,13 +242,13 @@ const gameLoop = () => {
     spawnObstacles()
     detectHit()
     if(counter === starsWin) {
-        youWinScreen.textContent = "Y O U   W I N!"
+        youWinScreen.textContent = "YOU WIN!"
         return
     }
     if (player.alive === false) {
         console.log("GAMEOVER")
         //insert game over text
-        gameoverScreen.textContent = "G A M E  O V E R !"
+        gameoverScreen.textContent = "GAMEOVER!"
        
         return
     }
