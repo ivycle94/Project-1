@@ -1,6 +1,11 @@
 body {
-   /* background-image: url("");*/
-    background-color: whitesmoke;
+   background-image: url("https://c4.wallpaperflare.com/wallpaper/605/490/357/simple-gradient-minimalism-wallpaper-preview.jpg"); 
+    background-color:  whitesmoke;
+    background-size:cover;
+    background-position: cover fixed;
+    background-repeat: no-repeat;
+
+    
 }
 
 #canvas {
@@ -14,8 +19,9 @@ body {
     background-size: cover;
     background-repeat: repeat-x;
     
-    
+    top: -35px;
     border: 1px solid black;
+    box-shadow: 0 0 20px 0 rgb(0, 0, 5);
     /*
     display: flex;
     align-items: center;
@@ -32,15 +38,22 @@ body {
 }
 
 #stars-counter {
+    color: whitesmoke;
+    /*font-family: ; */
     text-align: right;
-    right: 5px;
-    top: 520px;
+    right: 3px;
+    top: 488px;
     position: relative;
     z-index: 1;
 }
 
 h1 {
+    /*font-size: 80px;*/
+    /* font-family: "press start 2p"; */
+    top: 89%;
     position: absolute; 
-    left: 35%; 
+    /*left: 5%; */
+    left: 35%;
     z-index: 1;
+    
 }

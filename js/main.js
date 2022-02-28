@@ -4,6 +4,8 @@ const game = document.getElementById("canvas")
 const starCounter = document.getElementById("stars-counter")
 const gameoverScreen = document.getElementById("gameover")
 const youWinScreen = document.getElementById("you-win")
+const playAgain = document.getElementById("play-again")
+const pressEnter = document.getElementById("pressEnter")
 // getting game's context, which allows to specify where to put things and how big to make them.
 const ctx = game.getContext("2d")
 // declare obstacles as a variable for an array
@@ -14,12 +16,6 @@ let starsWin = 10
 // it basically means reading how it's displaying in the current state of the browser
 game.setAttribute("width", getComputedStyle(game)["width"])
 game.setAttribute("height", getComputedStyle(game)["height"])
-
-// const kirby = new Image()
-// kirby.src = "img/kirby.png"
-// const kirbWidth = 130
-// const kirbHeight = 119
-// let spriteX = 0
 
 //*********************** Class Constructor for Ball *******************************
 const kirbySprite = new Image()
@@ -52,7 +48,7 @@ class Ball {
         }
         if(this.y < 0) {
             //top barrier
-            this.y = 0,
+            this.y = 0
             this.vy = 0
         }
         if (pressedJump === true) {
@@ -62,7 +58,7 @@ class Ball {
     render = function () {
         ctx.fillStyle = this.color
         // ctx.fillRect(this.x, this.y, this.width, this.height)
-        ctx.drawImage(kirbySprite, this.kirbFrameX * this.width, 0, this.kirbWidth, this.kirbHeight, this.x - 15, this.y - 15, this.width * 1.6, this.height * 1.6)
+        ctx.drawImage(kirbySprite, this.kirbFrameX * this.width, 0, this.kirbWidth, this.kirbHeight, this.x - 14, this.y - 12, this.width * 1.6, this.height * 1.6)
     }
     jump = function () {
         this.vy -= 2
@@ -89,14 +85,15 @@ class Obstacle {
     constructor () {
         // this.imageWidth = 100,
         this.topObstacles = (Math.random() * canvas.height/3) + 50,
-        this.bottomObstacles = (Math.random() * canvas.height/3) + 70,
+        this.bottomObstacles = (Math.random() * canvas.height/3) + 50,
         this.x = canvas.width,
         this.width = 50,
-        this.color = "black"
+        this.color = "rgba(0,0,0,0.5)"
     }
     render = function () {
+        
         ctx.fillStyle = this.color
-        ctx.fillRect(this.x, 0, this.width, this.topObstacles) 
+        ctx.fillRect(this.x, 0 , this.width, this.topObstacles) 
         ctx.strokeRect(this.x, 0, this.width, this.topObstacles)// <----------------------------------------- top walls
         ctx.fillRect(this.x, canvas.height - this.bottomObstacles, this.width, this.bottomObstacles)
         ctx.strokeRect(this.x, canvas.height - this.bottomObstacles, this.width, this.bottomObstacles) // <--- bottom walls
@@ -145,7 +142,7 @@ starSprite.src = "img/star.png"
 const stars = []
 class Star {
     constructor() {
-        this.x = 550, // chnage this value if your canvas isnt 960 px (width should be 480)
+        this.x = 450, // chnage this value if your canvas isnt 960 px (width should be 480)
         this.y = (Math.floor(Math.random() * canvas.height) - player.height),
         this.color = "yellow",
         this.starHeight = 40,
@@ -167,7 +164,7 @@ class Star {
 // let star = new Star(40, 40, "yellow", 20, 20)
 
 const spawnStars = () => {
-    if (frame % 400 === 0) {
+    if (frame % 350 === 0) {
         stars.unshift(new Star)
     }
     for (let i = 0; i < stars.length; i++){
@@ -230,9 +227,14 @@ const starCollected = () => {
 let pressedJump = false
 let frame = 0
 let gamespeed = 2
+// let gameStart = false
 
 const gameLoop = () => {
     ctx.clearRect(0, 0, game.width, game.height)
+    // if (gameStart === false) {
+    //     pressEnter.textContent = "PRESS ENTER"
+    // }
+    // if (gameStart === true) {
     spawnStars()
     starCollected()
     player.update()
@@ -253,8 +255,11 @@ const gameLoop = () => {
     requestAnimationFrame(gameLoop)  
     frame ++ 
     // console.log(frame)
+    // }
 }
+
 gameLoop();
+
 
 
 addEventListener("keydown", function(e){
@@ -269,6 +274,9 @@ addEventListener("keydown", function(e){
         }
         
     }
+    // if (e.code === "Enter") {
+    //     gameStart === true
+    // }
 })
 addEventListener("keyup", function(e){
     // console.log("you released", e.code)
@@ -287,7 +295,7 @@ addEventListener("keyup", function(e){
 // }
 
 document.addEventListener("DOMContentLoaded", function () {
-    
+    // playAgain.addEventListener("click", resetButton)
     // document.addEventListener("keydown", jump)
     // setInterval(gameLoop, 1000)
 })
