@@ -70,7 +70,6 @@ class Ball {
     }
 }
 let player = new Ball()
-// let ball = new Ball(40, 200, "black", 40, 40)
 
 //******************* Class Constructor for Obstacles ***************************
 
@@ -84,7 +83,7 @@ const obstacles = []
 class Obstacle {
     constructor () {
         // this.imageWidth = 100,
-        this.topObstacles = (Math.random() * canvas.height/3) + 50,
+        this.topObstacles = (Math.random() * canvas.height/3) + 40,
         this.bottomObstacles = (Math.random() * canvas.height/3) + 50,
         this.x = canvas.width,
         this.width = 50,
@@ -98,9 +97,7 @@ class Obstacle {
         ctx.fillRect(this.x, canvas.height - this.bottomObstacles, this.width, this.bottomObstacles)
         ctx.strokeRect(this.x, canvas.height - this.bottomObstacles, this.width, this.bottomObstacles) // <--- bottom walls
         ctx.lineWidth = 1
-        ctx.strokeStyle = "whitesmoke"
-        
-        // ctx.drawImage(obstacleSprite, 0, 0, this.imageWidth, this.topObstacles, this.x, 0, this.width, this.bottomObstacles)
+        ctx.strokeStyle = "whitesmoke" 
     }
     update = function () {
         this.x -= 1
@@ -123,17 +120,6 @@ const spawnObstacles = () => {
         obstacles.pop()
     }
 }
-// DOESN"T WORK
-//  const spawnObstacles = () => {
-//             if (obstacle.x < 800) {
-//             let obstacle2 = new Obstacle(920, 250, "white", 50, 250)
-//             obstacles.push(obstacle2)
-//             obstacle2.render()
-//             let obstacle3 = new Obstacle(920, 250, "white", 50, 250) 
-//             obstacles.push(obstacle3) 
-//             obstacle3.render()
-//             }  
-//     }
 
 //******************* Class Constructor for Stars ***************************
 const starSprite = new Image()
@@ -161,8 +147,6 @@ class Star {
         this.render()
     }
 }
-// let star = new Star(40, 40, "yellow", 20, 20)
-
 const spawnStars = () => {
     if (frame % 350 === 0) {
         stars.unshift(new Star)
@@ -187,13 +171,11 @@ const detectHit = () => {
             player.y + player.height > 0) || 
             (player.y > (canvas.height - obstacles[i].bottomObstacles -45) && 
             player.y - player.height < canvas.height))) {
-
             // console.log('HIT!')
             player.alive = false
         }
     } 
 }  
-
 //******************* Collect Stars ***************************
 
 //let counter = 0
@@ -221,8 +203,8 @@ const starCollected = () => {
         }
     }
 }
-
 // console.log(counter)
+//******************* Game Loop ***************************
 
 let pressedJump = false
 let frame = 0
@@ -249,7 +231,6 @@ const gameLoop = () => {
         console.log("GAMEOVER")
         //insert game over text
         gameoverScreen.textContent = "GAMEOVER!"
-       
         return
     }
     requestAnimationFrame(gameLoop)  
@@ -257,10 +238,7 @@ const gameLoop = () => {
     // console.log(frame)
     // }
 }
-
 gameLoop();
-
-
 
 addEventListener("keydown", function(e){
     // console.log("you pressed", e.code)
@@ -284,15 +262,6 @@ addEventListener("keyup", function(e){
         pressedJump = false
     }
 })
-
-// const jump = (e) => {
-//     // spacebar keycode ----> 32
-//     switch (e.keyCode) {
-//         case (32):
-//             ball.y -= 40
-//             break
-//     }
-// }
 
 document.addEventListener("DOMContentLoaded", function () {
     // playAgain.addEventListener("click", resetButton)
