@@ -38,22 +38,58 @@ body {
 }
 
 #stars-counter {
-    color: whitesmoke;
-    /*font-family: ; */
+    color: black;
+    font-family: "press start 2p";
+    font-size: 30;
     text-align: right;
-    right: 3px;
-    top: 488px;
+    right: 470px;
+    top: 480px;
     position: relative;
+    text-shadow: 0 0 5px #ffffff;
     z-index: 1;
 }
 
-h1 {
-    /*font-size: 80px;*/
-    /* font-family: "press start 2p"; */
-    top: 89%;
+h2 {
+    font-size: 60px;
+    font-family: "press start 2p";
+    top: 40%;
     position: absolute; 
-    /*left: 5%; */
-    left: 35%;
+    left: 15%;
+    /* left: 35%; */
     z-index: 1;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 
+        0 0 5px #000000,
+        0 0 10px #000000,
+        0 0 20px #000000,
+        0 0 40px #000000,
+        0 0 50px #000000,
+        0 0 60px #000000,
+        0 0 80px #000000,
+        0 0 100px #000000,
+        0 0 150px #000000;
     
+}
+
+#star-glider {
+   position: relative;
+   text-align: center;
+   font-size: 110px;
+   margin-top: -60px;
+   margin-bottom: -40px;
+   letter-spacing: 10px;
+   font-family: "megrim";
+   color: rgb(0, 0, 0);
+   text-shadow: 0 0 5px #000000;
+}
+
+p {
+    font-family: "jura";
+    position: absolute;
+    text-align: center;
+    padding: 20px 20px;
+    top: 530px;
+    width: 660px;
+    border: 1px solid black;
+    font-size: 20px;
 }
