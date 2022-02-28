@@ -18,6 +18,9 @@ game.setAttribute("width", getComputedStyle(game)["width"])
 game.setAttribute("height", getComputedStyle(game)["height"])
 
 //*********************** Class Constructor for Ball *******************************
+
+
+
 const kirbySprite = new Image()
 kirbySprite.src = "img/kirby.png"
 class Ball {
@@ -84,7 +87,7 @@ class Obstacle {
     constructor () {
         // this.imageWidth = 100,
         this.topObstacles = (Math.random() * canvas.height/3) + 40,
-        this.bottomObstacles = (Math.random() * canvas.height/3) + 50,
+        this.bottomObstacles = (Math.random() * canvas.height/3) + 60,
         this.x = canvas.width,
         this.width = 50,
         this.color = "rgba(0,0,0,0.5)"
