@@ -1,4 +1,4 @@
-// console.log("test")
+// console.log("Test")
 // grabbing html elemnts and setting them up as variables to manipulate
 const game = document.getElementById("canvas")
 const starCounter = document.getElementById("stars-counter")
