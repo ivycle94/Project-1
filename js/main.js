@@ -190,7 +190,7 @@ const starCollected = () => {
             stars[i].y < player.y + player.height &&
             stars[i].y + stars[i].height > player.y
         ) {
-            console.log("COLLECTED STAR")
+            // console.log("COLLECTED STAR")
             // ctx.clearRect(0, 0, game.width, game.height)
             // return Star.alive = false
             // counter++
@@ -200,7 +200,7 @@ const starCollected = () => {
              counter++ 
              starCounter.textContent = "Stars: " + counter + "/" + starsWin
              if (counter === starsWin) {
-                 console.log("YOU WIN!")
+                //  console.log("YOU WIN!")
                 // return
             }
         }
@@ -231,7 +231,7 @@ const gameLoop = () => {
         return
     }
     if (player.alive === false) {
-        console.log("GAMEOVER")
+        // console.log("GAMEOVER")
         //insert game over text
         gameoverScreen.textContent = "GAMEOVER!"
         return
