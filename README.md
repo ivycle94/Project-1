@@ -1,22 +1,32 @@
-# PogoBall
+# Star Glider
 
-I wanted to created a game where you could be an ball and maneuver though obsatcles tight obstacles to collect stars. 
+Star Glider is a Flappy Bird clone but with a slight twist.
 
-**Instructions**
-: The ball will gradually fall due to gravity so the player must keep pressing the jump key to keep the ball stabilized enough to get through the course without touching the obstacles, while also making sure they have collected all the stars.
+- Deployed Link: https://ivycle94.github.io/Project-1/
 
-**Start Screen**
-: This screen will display the instructions of the game, and will require the player to press a key to start the game.
+**Instructions:**
+ The player will gradually fall due to gravity so they must press the jump key to keep the ball stabilized enough to get through the course without touching the obstacles. To beat the game the player must collect 10 stars. 
+
+**Controls:**
+Press or hold `Spacebar` to jump.
+
+# Wirefreames
+The name and deisgn are not set in stone and can be changed, but for the most part the general layout will be like this:
+- **Start Screen:**
+ This screen will display the instructions of the game, and will require the player to press a key to start the game.
 
 ![start](img/start.jpg)
-**Layout**
-:
+**Layout:**
 ![layout](img/layout.jpg)
 ![how-to-win](img/how-to-win.jpg)
 ![gameover](img/gameover.jpg)
 
-- This is the rough outline of what I am trying to accomplish, so as of right now they will be basic shapes.
+# Stretch Goals
 
-- If I am not behind schedule I want to implented an actual 2nd character model for the player, obbstacles, and star. 
+- Implement sprites and animations. 
 
-- If I am able to spruce up the design the name of the game will also change later as well.
+- Add styling to make the overal design more visually appealing.
+
+- Add more levels
+
+- Coming soon...
