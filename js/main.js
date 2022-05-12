@@ -214,6 +214,10 @@ let frame = 0
 let gamespeed = 2
 // let gameStart = false
 
+const stopAnimation = () => {
+    cancelAnimationFrame(gameLoop)
+}
+
 const gameLoop = () => {
     ctx.clearRect(0, 0, game.width, game.height)
     // if (gameStart === false) {
@@ -228,12 +232,14 @@ const gameLoop = () => {
     detectHit()
     if(counter === starsWin) {
         youWinScreen.textContent = "YOU WIN!"
+        // stopAnimation()
         return
     }
     if (player.alive === false) {
         // console.log("GAMEOVER")
         //insert game over text
         gameoverScreen.textContent = "GAMEOVER!"
+        // stopAnimation()
         return
     }
     requestAnimationFrame(gameLoop)  
